@@ -75,6 +75,12 @@ io.on('connection', function (socket) {
     });
   });
     
+  socket.on('game new', function () {
+    console.log("new game");
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('game new');
+  });
+    
   socket.on('game finish', function () {
     console.log("game finish in a draw");
     // echo globally (all clients) that a person has connected
