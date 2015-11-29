@@ -74,6 +74,12 @@ io.on('connection', function (socket) {
       username: socket.username
     });
   });
+    
+  socket.on('game finish', function () {
+    console.log("game finish in a draw");
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('game finish');
+  });
 
   // when the client emits 'typing', we broadcast it to others
   socket.on('typing', function () {
